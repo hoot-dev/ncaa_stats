@@ -14,7 +14,7 @@ def get_team_stats(user_agent)
       'User-Agent' => user_agent))
 
     data = doc.css('table#tab1 td').each_with_index.map { |stat, index|
-      if index % 9 <= 4 && index % 9 != 2 && index % 9 != 3
+      if [0,1,4].include?(index % 9)
         stat.text
       end
     }.compact
